@@ -16,19 +16,17 @@ public class Main {
                 while(originFile.ready()) { //While the file is ready to be red, read
                     destinyFile.write(originFile.read());
                 }
+                System.out.println("File copied successfully");
             } catch (Exception e) {
                 System.out.println("Origin file not found or destiny path not found"); //Message to let know there's been an error
-            } finally {
-                System.out.println("File copied successfully");
             }
         } else {
             try(FileInputStream originFile = new FileInputStream(origin);
             FileOutputStream destinyFile = new FileOutputStream(destiny)) { //try catch in case any paths are invalid
                 destinyFile.write(originFile.readAllBytes()); //Reads all bytes and after writes the given byte array
+                System.out.println("File copied successfully");
             } catch (Exception e) {
                 System.out.println("Origin file not found or destiny path not found"); //Message to let know there's been an error
-            } finally{
-                System.out.println("File copied successfully");
             }
         }
     }
