@@ -18,12 +18,13 @@ public class Main {
             File xmlFile = requestFilePath();
             Node root = getRoot(xmlFile);
             NodeList bookList = root.getChildNodes();
-            for (int i = 0; i < bookList.getLength(); i++){
+            for (int i = 0; i < bookList.getLength(); i++) {
                 Node book = bookList.item(i);
                 printInfo(book);
             }
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -53,25 +54,25 @@ public class Main {
         return (node);
     }
 
-    public static void printInfo(Node book)
-    {
+    public static void printInfo(Node book) {
         NodeList attributeList = book.getChildNodes();
-        String[] attributes = getAttributesValue(attributeList);
-        String Info = "Títol: " + attributes[0] + "\n";
-        Info += "Autor: " + attributes[1] + "\n";
-        Info += "Any: " + attributes[2] ;
-        System.out.print(Info);
+        String[] attributes = getChildValue(attributeList);
+        if (attributes.length > 0) {
+            String Info = "Títol: " + attributes[0] + "\n";
+            Info += "Autor: " + attributes[1] + "\n";
+            Info += "Any: " + attributes[2] + "\n";
+            Info += "Color: " + attributes[3] + "\n";
+            Info += "Raza: " + attributes[4] + "\n";
+            System.out.print(Info);
+        }
     }
 
-    public static String[] getAttributesValue(NodeList attibuteList)
-    {
-        String[] attributes = new String[attibuteList.getLength()];
-        for (int i = 0; i < attibuteList.getLength(); i++)
-        {
-            Node attribute = attibuteList.item(i);
-            if  (attribute.getNodeType() == Node.ELEMENT_NODE)
-            {
-                attributes[i] = attribute.getChildNodes().item(0).getNodeValue();
+    public static String[] getChildValue(NodeList childList) {
+        String[] attributes = new String[childList.getLength()];
+        for (int i = 1; i < childList.getLength(); i++) {
+            Node attribute = childList.item(i);
+            if (attribute.getNodeType() == Node.ELEMENT_NODE) {
+                attributes[i-1] = attribute.getChildNodes().item(0).getNodeValue();
             }
         }
         return attributes;
