@@ -7,6 +7,7 @@ import java.io.IOException;
 
 public class gatoHandler extends DefaultHandler{
     StringBuilder value;
+    int age;
     public gatoHandler(){
         this.value = new StringBuilder();
         System.out.println("Manejador de gatos creado");
@@ -15,9 +16,10 @@ public class gatoHandler extends DefaultHandler{
     @Override
     public void startElement(String uri, String localName,
                              String tagName, Attributes attributes) throws IndexOutOfBoundsException {
-        this.value.setLength(0);
         if(tagName.equals("gatito")){
-            System.out.println("Edad:" + attributes.getValue("edad"));
+            this.value.setLength(0);
+            this.value.append("Edad: ").append(attributes.getValue("edad")).append("\n");
+            this.age = Integer.parseInt(attributes.getValue("edad"));
         }
     }
     @Override
@@ -30,25 +32,26 @@ public class gatoHandler extends DefaultHandler{
     public void endElement(String uri, String localName, String tagName) {
         switch (tagName) {
             case "gatito":
-                System.out.println("-------------------");
+                System.out.print(this.value.toString());
+                createFileByAge(this.age, this.value.toString());
                 break;
             case "id":
-                System.out.println("Id: " + this.value.toString());
+                this.value.append("Id: ").append(this.value).append("\n");
                 break;
             case "nombre":
-                System.out.println("Nombre: " + this.value.toString());
+                this.value.append("Nombre: ").append(this.value).append("\n");
                 break;
             case "color":
-                System.out.println("Color: " + this.value.toString());
+                this.value.append("Color: ").append(this.value).append("\n");
                 break;
             case "raza":
-                System.out.println("Raza: " + this.value.toString());
+                this.value.append("Raza: ").append(this.value).append("\n");
                 break;
         }
     }
 
-    public void createFileByYear(String year, String content){
-        try(FileWriter writer = new FileWriter(("src/main/resources/gatitos_" + year + ".txt"), true)){
+    public void createFileByAge(int age, String content){
+        try(FileWriter writer = new FileWriter(("src/main/resources/gatitos_" + age + ".txt"), true)){
             writer.write(content);
         } catch(IOException e){
             System.out.println(e.getMessage());
