@@ -1,20 +1,34 @@
 package org.example;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
-@XmlRootElement(name = "gatitos")
-@XmlType(propOrder = { "id", "name", "age", "color", "breed" })
+@XmlType(propOrder = { "id", "name", "age", "color", "breed" }) // Define XML element order
+@XmlAccessorType(XmlAccessType.FIELD) // Use field access for XML binding
 
 public class cat {
+    @XmlElement(name = "id") // Map to <id> XML element
     private int id;
+    @XmlElement(name = "edad") // Map to <edad> XML element
     private int age;
+    @XmlElement(name = "nombre") // Map to <nombre> XML element
     private String name;
+    @XmlElement(name = "color") // Map to <color> XML element
     private String color;
+    @XmlElement(name = "raza") // Map to <raza> XML element
     private String breed;
 
-    public cat(int id, int age, String name, String color, String breed) {
+    public cat() { // Default constructor
+        this.id = 0; // Initialize attributes to default values
+        this.age = 0;
+        this.name = "";
+        this.color = "";
+        this.breed = "";
+    }
+
+    public cat(int id, int age, String name, String color, String breed) { // Parameterized constructor
         this.id = id;
         this.age = age;
         this.name = name;
@@ -22,52 +36,48 @@ public class cat {
         this.breed = breed;
     }
 
-    public int getId() {
+    public int getId() { // Getter for id
         return id;
     }
 
-    public int getAge() {
+    public int getAge() { // Getter for age
         return age;
     }
 
-    public String getName() {
+    public String getName() { // Getter for name
         return name;
     }
 
-    public String getColor() {
+    public String getColor() { // Getter for color
         return color;
     }
 
-    public String getBreed() {
+    public String getBreed() { // Getter for breed
         return breed;
     }
 
-    @XmlElement(name = "id")
-    public void setId(int id) {
+    public void setId(int id) { // Setter for id
         this.id = id;
     }
 
-    @XmlElement(name = "edad")
-    public void setAge(int age) {
+    public void setAge(int age) { // Setter for age
         this.age = age;
     }
-    @XmlElement(name = "nombre")
-    public void setName(String name) {
+
+    public void setName(String name) { // Setter for name
         this.name = name;
     }
 
-    @XmlElement(name = "color")
-    public void setColor(String color) {
+    public void setColor(String color) { // Setter for color
         this.color = color;
     }
 
-    @XmlElement(name = "raza")
-    public void setBreed(String breed) {
+    public void setBreed(String breed) { // Setter for breed
         this.breed = breed;
     }
 
-    public String toString() {
-        return "id: " + id + "\n" +
+    public String toString() { // Override toString method
+        return "id: " + id + "\n" + // Build formatted string with id
                 "age: " + age + "\n" +
                 "name: " + name + "\n" +
                 "color: " + color + "\n" +
