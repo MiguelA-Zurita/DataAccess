@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourcePerFileMappings">
-    <file url="file://$PROJECT_DIR$/src/main/java/org/example/ItemDAO.java" value="bc7fd93b-03b2-4986-a496-9cd5279a08ca" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/example/Database.java" value="bc7fd93b-03b2-4986-a496-9cd5279a08ca" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/example/ItemSale.java" value="bc7fd93b-03b2-4986-a496-9cd5279a08ca" />
   </component>
 </project>

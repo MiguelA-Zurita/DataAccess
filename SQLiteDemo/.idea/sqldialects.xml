@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/src/main/java/org/example/CustomerDAO.java" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/example/CustomerClass.java" dialect="SQLite" />
     <file url="file://$PROJECT_DIR$/src/main/java/org/example/Database.java" dialect="SQLite" />
-    <file url="file://$PROJECT_DIR$/src/main/java/org/example/ItemDAO.java" dialect="SQLite" />
-    <file url="file://$PROJECT_DIR$/src/main/java/org/example/ItemSaleDAO.java" dialect="SQLite" />
-    <file url="file://$PROJECT_DIR$/src/main/java/org/example/SaleDAO.java" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/example/ItemClass.java" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/example/ItemSale.java" dialect="SQLite" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/example/SaleClass.java" dialect="SQLite" />
   </component>
 </project>
