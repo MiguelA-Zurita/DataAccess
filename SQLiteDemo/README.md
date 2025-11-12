@@ -19,7 +19,7 @@ Tested with the following setup:
 
 ## Class Diagram
 
-![Class diagram](https://github.com/MiguelA-Zurita/DataAccess/blob/main/SQLiteDemo/src/main/resources/DiagramaClases_Botiga.jpg?raw=true)
+![Class diagram](https://github.com/MiguelA-Zurita/DataAccess/blob/main/SQLiteDemo/src/main/resources/DiagramaClases_Botiga.png?raw=true)
 
 ## How to run
 
