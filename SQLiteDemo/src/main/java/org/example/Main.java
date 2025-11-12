@@ -11,7 +11,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         boolean exit = false;
         while (!exit) {
-            System.out.println("==== SQLite Demo CRUD ====");
+            System.out.println("----- SQLite Demo CRUD -----");
             System.out.println("1. Customers");
             System.out.println("2. Items");
             System.out.println("3. Sales");
@@ -35,7 +35,7 @@ public class Main {
         System.out.println("Bye!");
     }
 
-    // ===== Customers =====
+    //Customers
     private static void customerMenu(Scanner sc) throws SQLException {
         boolean back = false;
         while (!back) {
@@ -49,40 +49,51 @@ public class Main {
             String opt = sc.nextLine().trim();
             switch (opt) {
                 case "1" -> {
-                    System.out.print("DNI (9 chars): "); String dni = sc.nextLine().trim();
-                    System.out.print("Name: "); String name = sc.nextLine().trim();
-                    System.out.print("First surname: "); String fs = sc.nextLine().trim();
-                    System.out.print("Last surname: "); String ls = sc.nextLine().trim();
-                    CustomerDAO.add(new Models.Customer(dni, name, fs, ls));
-                    System.out.println("Added.\n");
+                    System.out.print("DNI (9 chars): ");
+                    String dni = sc.nextLine().trim();
+                    System.out.print("Name: ");
+                    String name = sc.nextLine().trim();
+                    System.out.print("First surname: ");
+                    String fs = sc.nextLine().trim();
+                    System.out.print("Last surname: ");
+                    String ls = sc.nextLine().trim();
+                    CustomerDAO.add(new Tables.Customer(dni, name, fs, ls));
+                    System.out.println("Added");
                 }
                 case "2" -> {
-                    List<Models.Customer> list = CustomerDAO.getAll();
+                    List<Tables.Customer> list = CustomerDAO.getAll();
                     list.forEach(System.out::println);
                 }
                 case "3" -> {
-                    System.out.print("DNI to update: "); String dni = sc.nextLine().trim();
-                    Models.Customer c = CustomerDAO.getByDni(dni);
-                    if (c == null) { System.out.println("Not found\n"); break; }
-                    System.out.print("New Name ("+c.name+"): "); String name = emptyOr(sc.nextLine(), c.name);
-                    System.out.print("New First surname ("+c.firstSurname+"): "); String fs = emptyOr(sc.nextLine(), c.firstSurname);
-                    System.out.print("New Last surname ("+c.lastSurname+"): "); String ls = emptyOr(sc.nextLine(), c.lastSurname);
-                    c = new Models.Customer(dni, name, fs, ls);
+                    System.out.print("DNI to update: ");
+                    String dni = sc.nextLine().trim();
+                    Tables.Customer c = CustomerDAO.getByDni(dni);
+                    if (c == null) {
+                        System.out.println("Not found");
+                        break;
+                    }
+                    System.out.print("New Name ("+ c.name() +"): ");
+                    String name = emptyOr(sc.nextLine(), c.name());
+                    System.out.print("New First surname ("+ c.firstSurname() +"): ");
+                    String fs = emptyOr(sc.nextLine(), c.firstSurname());
+                    System.out.print("New Last surname ("+ c.lastSurname() +"): ");
+                    String ls = emptyOr(sc.nextLine(), c.lastSurname());
+                    c = new Tables.Customer(dni, name, fs, ls);
                     CustomerDAO.update(c);
-                    System.out.println("Updated.\n");
+                    System.out.println("Updated");
                 }
                 case "4" -> {
                     System.out.print("DNI to delete: "); String dni = sc.nextLine().trim();
                     CustomerDAO.delete(dni);
-                    System.out.println("Deleted.\n");
+                    System.out.println("Deleted");
                 }
                 case "0" -> back = true;
-                default -> System.out.println("Invalid option\n");
+                default -> System.out.println("Invalid option");
             }
         }
     }
 
-    // ===== Items =====
+    //Items
     private static void itemMenu(Scanner sc) throws SQLException {
         boolean back = false;
         while (!back) {
@@ -99,27 +110,35 @@ public class Main {
                     System.out.print("Name: "); String name = sc.nextLine().trim();
                     System.out.print("Unit price: "); double price = Double.parseDouble(sc.nextLine());
                     System.out.print("Stock: "); int stock = Integer.parseInt(sc.nextLine());
-                    ItemDAO.add(new Models.Item(0, price, name, stock));
+                    ItemDAO.add(new Tables.Item(0, price, name, stock));
                     System.out.println("Added.\n");
                 }
                 case "2" -> ItemDAO.getAll().forEach(System.out::println);
                 case "3" -> {
                     System.out.print("ID to update: "); int id = Integer.parseInt(sc.nextLine());
-                    Models.Item it = ItemDAO.getById(id);
-                    if (it == null) { System.out.println("Not found\n"); break; }
-                    System.out.print("New name ("+it.name+"): "); String name = emptyOr(sc.nextLine(), it.name);
-                    System.out.print("New unit price ("+it.unitPrice+"): "); String sp = sc.nextLine(); double price = sp.isBlank()? it.unitPrice : Double.parseDouble(sp);
-                    System.out.print("New stock ("+it.stock+"): "); String ss = sc.nextLine(); int stock = ss.isBlank()? it.stock : Integer.parseInt(ss);
-                    ItemDAO.update(new Models.Item(id, price, name, stock));
-                    System.out.println("Updated.\n");
+                    Tables.Item it = ItemDAO.getById(id);
+                    if (it == null) {
+                        System.out.println("Not found\n");
+                    } else {
+                        System.out.print("New name (" + it.name() + "): ");
+                        String name = emptyOr(sc.nextLine(), it.name());
+                        System.out.print("New unit price (" + it.unitPrice() + "): ");
+                        String sp = sc.nextLine();
+                        double price = sp.isBlank() ? it.unitPrice() : Double.parseDouble(sp);
+                        System.out.print("New stock (" + it.stock() + "): ");
+                        String ss = sc.nextLine();
+                        int stock = ss.isBlank() ? it.stock() : Integer.parseInt(ss);
+                        ItemDAO.update(new Tables.Item(id, price, name, stock));
+                        System.out.println("Updated.\n");
+                    }
                 }
                 case "4" -> {
                     System.out.print("ID to delete: "); int id = Integer.parseInt(sc.nextLine());
                     ItemDAO.delete(id);
-                    System.out.println("Deleted.\n");
+                    System.out.println("Deleted.");
                 }
                 case "0" -> back = true;
-                default -> System.out.println("Invalid option\n");
+                default -> System.out.println("Invalid option");
             }
         }
     }
@@ -138,19 +157,23 @@ public class Main {
             String opt = sc.nextLine().trim();
             switch (opt) {
                 case "1" -> {
-                    System.out.print("Sales date (YYYY-MM-DD): "); LocalDate d = LocalDate.parse(sc.nextLine().trim());
-                    System.out.print("DNI member (empty for null): "); String dni = sc.nextLine().trim();
-                    Integer id = SaleDAO.add(new Models.Sale(0, 0.0, d, dni.isBlank()? null : dni));
+                    System.out.print("Sales date (YYYY-MM-DD): ");
+                    LocalDate d = LocalDate.parse(sc.nextLine().trim());
+                    System.out.print("DNI member (empty for null): ");
+                    String dni = sc.nextLine().trim();
+                    System.out.print("Total price: ");
+                    double tp = Double.parseDouble(sc.nextLine());
+                    Integer id = SaleDAO.add(new Tables.Sale(0, tp, d, dni.isBlank()? null : dni));
                     System.out.println("Added sale with ID: " + id + "\n");
                 }
                 case "2" -> SaleDAO.getAll().forEach(System.out::println);
                 case "3" -> {
                     System.out.print("Sale ID to update: "); int id = Integer.parseInt(sc.nextLine());
-                    Models.Sale s = SaleDAO.getById(id);
+                    Tables.Sale s = SaleDAO.getById(id);
                     if (s == null) { System.out.println("Not found\n"); break; }
-                    System.out.print("New date ("+s.salesDate+"): "); String sd = sc.nextLine(); LocalDate d = sd.isBlank()? s.salesDate : LocalDate.parse(sd.trim());
-                    System.out.print("New DNI ("+(s.dniMember==null?"null":s.dniMember)+"): "); String dn = sc.nextLine(); String dni = dn.isBlank()? s.dniMember : dn.trim();
-                    SaleDAO.update(new Models.Sale(id, s.totalPrice, d, dni));
+                    System.out.print("New date ("+ s.salesDate() +"): "); String sd = sc.nextLine(); LocalDate d = sd.isBlank()? s.salesDate() : LocalDate.parse(sd.trim());
+                    System.out.print("New DNI ("+(s.dniMember() ==null?"null": s.dniMember())+"): "); String dn = sc.nextLine(); String dni = dn.isBlank()? s.dniMember() : dn.trim();
+                    SaleDAO.update(new Tables.Sale(id, s.totalPrice(), d, dni));
                     System.out.println("Updated.\n");
                 }
                 case "4" -> {

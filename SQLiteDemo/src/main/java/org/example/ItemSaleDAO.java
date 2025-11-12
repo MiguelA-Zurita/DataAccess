@@ -35,15 +35,15 @@ public class ItemSaleDAO {
         }
     }
 
-    public static List<Models.ItemInSale> listBySale(int saleId) throws SQLException {
+    public static List<Tables.ItemInSale> listBySale(int saleId) throws SQLException {
         String sql = "SELECT isls.ID_Sale, isls.ID_Item, i.Name, i.UnitPrice, isls.Quantity " +
                 "FROM ITEMS_SALES isls JOIN ITEMS i ON i.ID = isls.ID_Item WHERE isls.ID_Sale = ? ORDER BY isls.ID_Item";
-        List<Models.ItemInSale> list = new ArrayList<>();
+        List<Tables.ItemInSale> list = new ArrayList<>();
         try (Connection conn = Database.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, saleId);
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    list.add(new Models.ItemInSale(
+                    list.add(new Tables.ItemInSale(
                             rs.getInt(1),
                             rs.getInt(2),
                             rs.getString(3),
