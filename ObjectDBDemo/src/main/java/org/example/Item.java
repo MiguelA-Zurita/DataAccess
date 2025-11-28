@@ -16,6 +16,12 @@ public class Item {
         this.price = price;
         this.stock = stock;
     }
+    public Item(int id, String name, Double price, int stock) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+    }
 
     public Item() {}
 

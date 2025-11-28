@@ -1,7 +1,11 @@
 package org.example;
 
+import jakarta.persistence.Id;
+
 public class ItemSales {
+    @Id
     private int idItem;
+    @Id
     private int idSales;
     private int quantity;
 

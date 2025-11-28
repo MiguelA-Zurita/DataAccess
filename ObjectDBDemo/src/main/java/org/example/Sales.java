@@ -16,6 +16,12 @@ public class Sales {
         this.date = date;
         this.customerDni = customerDni;
     }
+    public Sales(int id, double total, String date, String customerDni) {
+        this.id = id;
+        this.total = total;
+        this.date = date;
+        this.customerDni = customerDni;
+    }
 
     public Sales() {}
 
