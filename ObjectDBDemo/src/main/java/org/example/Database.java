@@ -22,6 +22,18 @@ public class Database implements AutoCloseable {
     public void insert(Object object) { // Insert a new object in the database
         try {
             em.getTransaction().begin();
+
+            if (object instanceof ItemSales) {
+                ItemSales is = (ItemSales) object;
+                if (is.getItem() != null) {
+                    Item managedItem = em.find(Item.class, is.getItem().getId());
+                    if (managedItem != null) is.setItem(managedItem);
+                }
+                if (is.getSales() != null) {
+                    Sales managedSales = em.find(Sales.class, is.getSales().getId());
+                    if (managedSales != null) is.setSales(managedSales);
+                }
+            }
             em.persist(object); // Persist the object
             em.getTransaction().commit(); // Commit the transaction
         } catch (Exception e) {
@@ -33,7 +45,9 @@ public class Database implements AutoCloseable {
     public void delete(Object object) { // Delete an object from the database
         try {
             em.getTransaction().begin();
-            em.remove(object); // Remove the object
+            // Ensure the entity is managed before removal to avoid
+            Object managed = em.contains(object) ? object : em.merge(object);
+            em.remove(managed); // Remove the managed entity
             em.getTransaction().commit();
         } catch (Exception e) {
             this.rollBack();

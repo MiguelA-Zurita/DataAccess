@@ -14,10 +14,10 @@ public class Main {
                         customerMenu(sc);
                         break;
                     case 2:
-                        salesMenu(sc);
+                        itemMenu(sc);
                         break;
                     case 3:
-                        itemMenu(sc);
+                        salesMenu(sc);
                         break;
                     case 4:
                         itemSalesMenu(sc);
@@ -108,10 +108,10 @@ public class Main {
         boolean exit = false;
         while (!exit) {
             System.out.println("Item Menu");
-            System.out.println("1. Add Item");
-            System.out.println("2. Delete Item");
-            System.out.println("3. Update Item");
-            System.out.println("4. List Items");
+            System.out.println("1. Add Sales");
+            System.out.println("2. Delete Sales");
+            System.out.println("3. Update Sales");
+            System.out.println("4. List Sales");
             System.out.println("5. Back");
             try (Database db = new Database()) { // Try with resources to close the database connection
                 System.out.print("Choose an option: ");
@@ -179,7 +179,7 @@ public class Main {
                         String name = sc.next();
                         System.out.print("Type the price of the item: ");
                         double price = sc.nextDouble();
-                        System.out.print("Type the DNI of the customer: ");
+                        System.out.print("Type the stock of the item: ");
                         int stock = sc.nextInt();
                         db.insert(new Item(name, price, stock)); // Insert the item in the database
                         break;

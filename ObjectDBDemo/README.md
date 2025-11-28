@@ -26,6 +26,10 @@ Project layout:
 ## Entity-Relation Diagram
 
 ![Class diagram](https://github.com/MiguelA-Zurita/DataAccess/blob/main/ObjectDBDemo/src/main/resources/DiagramaClases_Botiga.png?raw=true)
+
+## Explorer View
+
+![Class diagram](https://github.com/MiguelA-Zurita/DataAccess/blob/main/ObjectDBDemo/src/main/resources/explorer.png?raw=true)
 ## How to Run
 
 You can run the app either from an IDE or using Maven from the command line.

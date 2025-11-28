@@ -14,7 +14,7 @@ public class Item {
     private Double price;
     private int stock;
 
-    @OneToMany(mappedBy = "item") // Relationship between Item and ItemSales
+    @OneToMany(mappedBy = "item", cascade = jakarta.persistence.CascadeType.ALL, orphanRemoval = true) // Relationship between Item and ItemSales with cascade delete
     private Set<ItemSales> itemSales; // Items sold in sales
 
     public Item(String name, Double price, int stock) { // Constructor

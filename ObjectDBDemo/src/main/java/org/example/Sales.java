@@ -14,7 +14,7 @@ public class Sales {
     @JoinColumn(name = "customer_dni", referencedColumnName = "dni", nullable = true) // Relationship between Sales and Customer
     private Customer customer; // Customer of the sale
 
-    @OneToMany(mappedBy = "sales", cascade = CascadeType.ALL, orphanRemoval = false) // Relationship between Sales and ItemSales
+    @OneToMany(mappedBy = "sales", cascade = CascadeType.ALL, orphanRemoval = true) // Relationship between Sales and ItemSales with cascade delete
     private java.util.Set<ItemSales> itemSales; // Items sold in the sale
 
     public Sales(double total, String date, String customerDni) { // Constructor

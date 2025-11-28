@@ -2,7 +2,7 @@ package org.example;
 
 import jakarta.persistence.*;
 
-@Entity
+@Entity @IdClass(ItemSales.class)
 public class ItemSales {
     @Id
     @ManyToOne(fetch = FetchType.EAGER)

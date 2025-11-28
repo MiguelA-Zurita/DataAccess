@@ -13,7 +13,7 @@ public class Customer { // Customer class
     private String firstSurname;
     private String secondSurname;
 
-    @OneToMany(mappedBy = "customer")  // Relationship between Customer and Sales
+    @OneToMany(mappedBy = "customer", cascade = jakarta.persistence.CascadeType.ALL, orphanRemoval = true)  // Relationship between Customer and Sales with cascade delete
     private Set<Sales> sales; // Sales of the customer
 
     public Customer(String dni, String name, String firstSurname, String secondSurname) {
