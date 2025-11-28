@@ -1,38 +1,53 @@
 package org.example;
 
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+@Entity
 public class ItemSales {
     @Id
-    private int idItem;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @MapsId("itemId")
+    @JoinColumn(name = "item_id", referencedColumnName = "id") // Relationship between ItemSales and Item
+    private Item item; // Item sold
+
     @Id
-    private int idSales;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @MapsId("salesId")
+    @JoinColumn(name = "sales_id", referencedColumnName = "id") // Relationship between ItemSales and Sales
+    private Sales sales; // Sales in which the item is sold
+
     private int quantity;
 
     public ItemSales(int idItem, int idSales, int quantity){
-        this.idItem = idItem;
-        this.idSales = idSales;
+        Item i = new Item(); // Create the item
+        i.setId(idItem);
+        this.item = i; // Set the item in the item sales
+        Sales s = new Sales();// Create the sales
+        s.setId(idSales);  // Set the sales in the item sales
+        this.sales = s;
         this.quantity = quantity;
     }
 
     public ItemSales(){}
+    // Getters and Setters
+    public Item getItem() { return item; }
+    public void setItem(Item item) { this.item = item; }
 
-    public int getIdItem() {
-        return idItem;
-    }
-    public int getIdSales() {
-        return idSales;
-    }
+    public Sales getSales() { return sales; }
+    public void setSales(Sales sales) { this.sales = sales; }
+
     public int getQuantity() {
         return quantity;
     }
-    public void setIdItem(int idItem) {
-        this.idItem = idItem;
-    }
-    public void setIdSales(int idSales) {
-        this.idSales = idSales;
-    }
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+    // toString method
+    @Override
+    public String toString() {
+        return "ItemSales{" +
+                "itemId=" + (item.getId()) +
+                ", salesId=" + (sales.getId()) +
+                ", quantity=" + quantity + '}';
     }
 }

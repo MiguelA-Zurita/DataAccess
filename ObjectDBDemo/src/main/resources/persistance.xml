@@ -4,12 +4,45 @@ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
              http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
-    <persistence-unit name="ObjectDBDemoPU" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="salesUnit" transaction-type="RESOURCE_LOCAL">
         <provider>com.objectdb.jpa.Provider</provider>
         <class>org.example.Sales</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="objectdb://localhost:6136/ObjectDBDemo.odb"/>
-            <property name="javax.persistance.jdbc.driver" value="com.objectdb.Driver"/>
+            <property name="javax.persistence.jdbc.driver" value="com.objectdb.Driver"/>
+            <property name="javax.persistence.jdbc.user" value=""/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.schema-generation.database.action" value="create"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="itemUnit" transaction-type="RESOURCE_LOCAL">
+        <provider>com.objectdb.jpa.Provider</provider>
+        <class>org.example.Item</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="objectdb://localhost:6136/ObjectDBDemo.odb"/>
+            <property name="javax.persistence.jdbc.driver" value="com.objectdb.Driver"/>
+            <property name="javax.persistence.jdbc.user" value=""/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.schema-generation.database.action" value="create"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="itemSalesUnit" transaction-type="RESOURCE_LOCAL">
+        <provider>com.objectdb.jpa.Provider</provider>
+        <class>org.example.ItemSales</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="objectdb://localhost:6136/ObjectDBDemo.odb"/>
+            <property name="javax.persistence.jdbc.driver" value="com.objectdb.Driver"/>
+            <property name="javax.persistence.jdbc.user" value=""/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.schema-generation.database.action" value="create"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="customerUnit" transaction-type="RESOURCE_LOCAL">
+        <provider>com.objectdb.jpa.Provider</provider>
+        <class>org.example.Customer</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="objectdb://localhost:6136/ObjectDBDemo.odb"/>
+            <property name="javax.persistence.jdbc.driver" value="com.objectdb.Driver"/>
             <property name="javax.persistence.jdbc.user" value=""/>
             <property name="javax.persistence.jdbc.password" value=""/>
             <property name="javax.persistence.schema-generation.database.action" value="create"/>

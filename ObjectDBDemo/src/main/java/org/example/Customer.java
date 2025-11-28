@@ -1,13 +1,20 @@
 package org.example;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import java.util.Set;
 
-public class Customer {
+@Entity
+public class Customer { // Customer class
     @Id
-    private String dni;
+    private String dni; // DNI as primary key
     private String name;
     private String firstSurname;
     private String secondSurname;
+
+    @OneToMany(mappedBy = "customer")  // Relationship between Customer and Sales
+    private Set<Sales> sales; // Sales of the customer
 
     public Customer(String dni, String name, String firstSurname, String secondSurname) {
         this.dni = dni;
@@ -17,6 +24,8 @@ public class Customer {
     }
 
     public Customer() {}
+
+    //Getters and Setters
 
     public String getDni() {
         return dni;
@@ -43,6 +52,11 @@ public class Customer {
         this.secondSurname = secondSurname;
     }
 
+    public Set<Sales> getSales() { return sales; }
+
+    public void setSales(Set<Sales> sales) { this.sales = sales; }
+
+    // toString method
     @Override
     public String toString() {
         return "Customer{" + "dni='" + dni + '\'' + ", name='" + name + '\'' + ", firstSurname='" + firstSurname + '\'' + ", secondSurname='" + secondSurname + '\'' + '}';
