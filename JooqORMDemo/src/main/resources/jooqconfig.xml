@@ -1,0 +1,34 @@
+<configuration>
+    <!-- Configure the database connection here -->
+    <jdbc>
+        <driver>com.mysql.cj.jdbc.Driver</driver>
+        <url>jdbc:mysql://localhost:3306</url>
+        <user>root</user>
+        <password>cide2050</password>
+
+        <properties>
+            <property><key>user</key><value>root</value></property>
+            <property><key>password</key><value>cide2050</value></property>
+        </properties>
+    </jdbc>
+
+    <generator>
+        <database>
+            <name>org.jooq.meta.oracle.OracleDatabase</name>
+            <includes>.*</includes>
+            <excludes>
+                UNUSED_TABLE                # This table (unqualified name) should not be generated
+                | PREFIX_.*                   # Objects with a given prefix should not be generated
+                | SECRET_SCHEMA\.SECRET_TABLE # This table (qualified name) should not be generated
+                | SECRET_ROUTINE              # This routine (unqualified name) ...
+            </excludes>
+            <inputSchema>library_db</inputSchema>
+        </database>
+        <generate/>
+
+        <target>
+            <packageName>org.example</packageName>
+            <directory>/target/classes</directory>
+        </target>
+    </generator>
+</configuration>
