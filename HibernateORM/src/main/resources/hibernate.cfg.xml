@@ -8,7 +8,7 @@
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate_db</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">password</property>
+        <property name="hibernate.connection.password">cide2050</property>
 
         <!-- JDBC connection pool settings -->
         <property name="hibernate.c3p0.min_size">5</property>
@@ -16,7 +16,7 @@
         <property name="hibernate.c3p0.timeout">300</property>
 
         <!-- SQL dialect -->
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQL</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 
         <!-- table generation mode -->
         <property name="hibernate.hbm2ddl.auto">update</property>
@@ -26,6 +26,7 @@
         <property name="hibernate.format_sql">true</property>
 
         <!-- Specify annotated classes -->
-        <mapping class="org.ahad.hibernate.entity.Employee"/>
+        <mapping class="org.example.Author"/>
+        <mapping class="org.example.Book"/>
     </session-factory>
 </hibernate-configuration>

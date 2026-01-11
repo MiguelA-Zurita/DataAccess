@@ -7,30 +7,58 @@ import jakarta.persistence.*;
 public class Book {
 
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "id")
-        private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
 
-        @Column(name = "first_name")
-        private String title;
+    @Column(name = "title")
+    private String title;
 
-        @Column(name = "last_name")
-        private String lastName;
+    @Column(name = "year")
+    private int year;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private String author;
 
-        @Column(name = "email")
-        private String email;
+    public Book() {
+    }
 
-        public Book() {
-        }
+    public Book(String title, int year, String author) {
+        this.title = title;
+        this.year = year;
+        this.author = author;
+    }
 
-        public Book(String title, String lastName  , String email) {
-            this.title = title;
-            this.lastName = lastName;
-            this.email = email;
-        }
+    public int getId() {
+        return id;
+    }
 
-        public Long getId() {
-            return id;
-        }
+    public String getTitle() {
+        return title;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
 }
