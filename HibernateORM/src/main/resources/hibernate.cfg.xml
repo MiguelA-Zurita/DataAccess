@@ -6,14 +6,6 @@
 
         <!-- JDBC Database Connection Settings -->
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hibernate_db</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">cide2050</property>
-
-        <!-- JDBC connection pool settings -->
-        <property name="hibernate.c3p0.min_size">5</property>
-        <property name="hibernate.c3p0.max_size">20</property>
-        <property name="hibernate.c3p0.timeout">300</property>
 
         <!-- SQL dialect -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
