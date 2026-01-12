@@ -19,12 +19,12 @@ public class Book {
     private int year;
     @ManyToOne
     @JoinColumn(name = "author_id")
-    private String author;
+    private Author author;
 
     public Book() {
     }
 
-    public Book(String title, int year, String author) {
+    public Book(String title, int year, Author author) {
         this.title = title;
         this.year = year;
         this.author = author;
@@ -42,11 +42,11 @@ public class Book {
         return year;
     }
 
-    public String getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor_id(Author author) {
         this.author = author;
     }
 

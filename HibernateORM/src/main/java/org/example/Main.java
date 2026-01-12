@@ -14,8 +14,8 @@ public class Main {
             Author author = new Author("J.K. Rowling", "1965-07-31");
             session.persist(author);
 
-            Book book1 = new Book("Harry Potter and the Philosopher's Stone", 1997, author.getName());
-            Book book2 = new Book("Harry Potter and the Chamber of Secrets", 1998, author.getName());
+            Book book1 = new Book("Harry Potter and the Philosopher's Stone", 1997, author);
+            Book book2 = new Book("Harry Potter and the Chamber of Secrets", 1998, author);
             session.persist(book1);
             session.persist(book2);
 

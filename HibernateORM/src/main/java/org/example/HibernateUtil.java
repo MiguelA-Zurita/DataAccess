@@ -12,22 +12,23 @@ public class HibernateUtil {
 
     public static synchronized void buildSessionFactory() {
         if (factory == null) {
-            try{
-            Configuration cfg = new Configuration().configure();
-            cfg.setProperty("hibernate.current_session_context_class", "thread");
-            ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties()).build();
-            factory = cfg.buildSessionFactory(serviceRegistry);
-            } catch (Exception e) {
-                System.err.println(e.getMessage());
+            try {
+                Configuration configuration = new Configuration().configure();
+                configuration.setProperty("hibernate.current_session_context_class", "thread");
+
+                ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
+
+                factory = configuration.buildSessionFactory(serviceRegistry);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
-    }
 
-    public static void openSessionAndBindToThread() {
+        public static void openSessionAndBindToThread() {
         Session session = factory.openSession();
         ThreadLocalSessionContext.bind(session);
     }
-
 
     public static SessionFactory getSessionFactory() {
         if (factory == null) {
