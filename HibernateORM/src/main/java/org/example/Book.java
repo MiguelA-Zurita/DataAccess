@@ -15,7 +15,7 @@ public class Book {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "year")
+    @Column(name = "book_year")
     private int year;
     @ManyToOne
     @JoinColumn(name = "author_id")
@@ -46,7 +46,7 @@ public class Book {
         return author;
     }
 
-    public void setAuthor_id(Author author) {
+    public void setAuthor(Author author) {
         this.author = author;
     }
 
@@ -60,5 +60,15 @@ public class Book {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", year=" + year +
+                ", author=" + (author != null ? author.getName() : "null") +
+                '}';
     }
 }

@@ -9,7 +9,7 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "name")
+    @Column(name = "author")
     private String name;
     @Column(name = "birthdate")
     private String birthDate;
@@ -41,5 +41,12 @@ public class Author {
     public void setBirthDate(String date) {
         this.birthDate = date;
     }
-
+    @Override
+    public String toString() {
+        return "Author{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", birthDate='" + birthDate + '\'' +
+                '}';
+    }
 }
