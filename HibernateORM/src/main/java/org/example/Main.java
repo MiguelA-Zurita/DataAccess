@@ -98,7 +98,8 @@ public class Main {
                 }
                 case "4" -> {
                     System.out.print("DNI to delete: "); String dni = sc.nextLine().trim();
-                    //TODO: delete author
+                    Author author = session.find(Author.class, Integer.parseInt(dni));
+                    session.remove(author);
                     System.out.println("Deleted");
                 }
                 case "0" -> back = true;
