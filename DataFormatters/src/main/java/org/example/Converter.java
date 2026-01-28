@@ -2,23 +2,22 @@ package org.example;
 
 import org.json.*;
 import org.bson.*;
-import org.springframework.data.mongodb.util.BsonUtils;
+import java.io.*;
 
-public class Converter {
-    public static JSONObject convertXmlToJson(String xml){
-        JSONObject jsonObj = XML.toJSONObject(xml);
-        if (jsonObj == null) throw new NullPointerException();
-        return jsonObj;
+public class Converter { //Converter Class for utilities
+    public static JSONObject convertXmlToJson(String xml) throws JSONException{ //Convert XML string into a JSON
+        return XML.toJSONObject(xml);
     }
-    public static XML convertJsonToXml(JSONObject json){
-        return JSONObject.fromJson(json.toString(), XML.class);
+
+    public static String convertJsonToXml(JSONObject json) { //Convert JSON string into XML
+        return XML.toString(json);
     }
-    public static JSONObject convertBsonToJson(Document bson){
-        String jsonString = BsonUtils.toJson(bson);
-        if (jsonString == null) throw new NullPointerException();
-        return new JSONObject(jsonString);
+
+    public static JSONObject convertBsonToJson(Document bson) { //Convert BSON document into JSON
+        return new JSONObject(bson.toJson());
     }
-    public static Document convertJsonToBson(JSONObject json){
+
+    public static Document convertJsonToBson(JSONObject json) { //Convert JSON document into BSON
         return Document.parse(json.toString());
     }
 }

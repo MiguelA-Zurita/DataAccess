@@ -19,14 +19,12 @@
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20251224</version>
-            <scope>compile</scope>
         </dependency>
         <!-- Source: https://mvnrepository.com/artifact/org.springframework.data/spring-data-mongodb -->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-mongodb</artifactId>
             <version>5.0.2</version>
-            <scope>compile</scope>
-        </dependency>
+        </dependency><!-- Source: https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-sync -->
     </dependencies>
 </project>

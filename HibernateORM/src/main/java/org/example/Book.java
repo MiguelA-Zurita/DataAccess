@@ -3,33 +3,36 @@ package org.example;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "book")
+@Table(name = "book") //Table name
 public class Book {
-
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //Autoincrement
     @Column(name = "id")
-    private int id;
+    private int id; //Primary key
 
     @Column(name = "title")
-    private String title;
+    private String title; //Book title
 
     @Column(name = "book_year")
-    private int year;
+    private int year; //Year of publication
     @ManyToOne
-    @JoinColumn(name = "author_id")
-    private Author author;
+    @JoinColumn(name = "author")
+    private Author author; //Author of the book
 
     public Book() {
     }
 
-    public Book(String title, int year, Author author) {
+    public Book(String title, int year, Author author) { //Constructor with parameters
         this.title = title;
         this.year = year;
         this.author = author;
     }
-
+    public Book(String title, int year) { //Constructor without author
+        this.title = title;
+        this.year = year;
+        this.author = null;
+    }
+        //Getters and setters
     public int getId() {
         return id;
     }
@@ -62,6 +65,7 @@ public class Book {
         this.year = year;
     }
 
+    //toString method
     @Override
     public String toString() {
         return "Book{" +

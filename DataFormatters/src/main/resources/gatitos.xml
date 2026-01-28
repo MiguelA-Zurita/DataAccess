@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gatitos>
+    <gatito edad="2">
+        <id>1</id>
+        <nombre>Misu</nombre>
+        <color>gris</color>
+        <raza>Siames</raza>
+    </gatito>
+    <gatito edad="1">
+        <id>2</id>
+        <nombre>Luna</nombre>
+        <color>blanco</color>
+        <raza>Persa</raza>
+    </gatito>
+    <gatito edad="3">
+        <id>3</id>
+        <nombre>Toby</nombre>
+        <color>naranja</color>
+        <raza>Gato común</raza>
+    </gatito>
+    <gatito edad="4">
+        <id>4</id>
+        <nombre>Nina</nombre>
+        <color>negro</color>
+        <raza>Bombay</raza>
+    </gatito>
+    <gatito edad="2">
+        <id>5</id>
+        <nombre>Simba</nombre>
+        <color>atigrado</color>
+        <raza>Bengalí</raza>
+    </gatito>
+    <gatito edad="1">
+        <id>6</id>
+        <nombre>Coco</nombre>
+        <color>marrón</color>
+        <raza>Maine Coon</raza>
+    </gatito>
+    <gatito edad="5">
+        <id>7</id>
+        <nombre>Loki</nombre>
+        <color>blanco y negro</color>
+        <raza>British Shorthair</raza>
+    </gatito>
+    <gatito edad="6">
+        <id>8</id>
+        <nombre>Mia</nombre>
+        <color>gris</color>
+        <raza>Ragdoll</raza>
+    </gatito>
+    <gatito edad="10">
+        <id>9</id>
+        <nombre>Oscar</nombre>
+        <color>canela</color>
+        <raza>Exótico</raza>
+    </gatito>
+    <gatito edad="2">
+        <id>10</id>
+        <nombre>Bella</nombre>
+        <color>blanco</color>
+        <raza>Angora</raza>
+    </gatito>
+    <gatito edad="3">
+        <id>11</id>
+        <nombre>Max</nombre>
+        <color>naranja</color>
+        <raza>Siberiano</raza>
+    </gatito>
+    <gatito edad="1">
+        <id>12</id>
+        <nombre>Sasha</nombre>
+        <color>negro</color>
+        <raza>Azul Ruso</raza>
+    </gatito>
+</gatitos>
