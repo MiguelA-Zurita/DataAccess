@@ -51,10 +51,6 @@ public class Main {
             HibernateUtil.closeSessionAndUnbindFromThread();
         }
         HibernateUtil.closeSessionFactory();
-
-
-
-
     }
 
     public static void authorMenu(Scanner sc) {
