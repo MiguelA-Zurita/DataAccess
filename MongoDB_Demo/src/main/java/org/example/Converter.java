@@ -1,9 +1,8 @@
 package org.example;
 
-import org.bson.Document;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.XML;
+import org.json.*;
+import org.bson.*;
+import java.io.*;
 
 public class Converter { //Converter Class for utilities
     public static JSONObject convertXmlToJson(String xml) throws JSONException{ //Convert XML string into a JSON
