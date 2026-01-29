@@ -4,22 +4,23 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "author")
-public class Author {
+@Table(name = "author") //Table name
+public class Author { //Author class
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(name = "author")
-    private String name;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //Autoincrement
+    private int id; //Primary key
+    @Column(name = "name")
+    private String name; //Author name
     @Column(name = "birthdate")
-    private String birthDate;
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+    private String birthDate; //Author birthdate
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL) //
     private List<Book> bookList;
     public Author(){}
-    public Author(String name, String birthDate) {
+    public Author(String name, String birthDate) { //Constructor with parameters
         this.name = name;
         this.birthDate = birthDate;
     }
+    //Getters and setters
     public int getId() {
         return id;
     }
@@ -41,6 +42,7 @@ public class Author {
     public void setBirthDate(String date) {
         this.birthDate = date;
     }
+    // toString method
     @Override
     public String toString() {
         return "Author{" +

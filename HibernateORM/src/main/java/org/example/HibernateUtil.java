@@ -1,18 +1,13 @@
 package org.example;
 
-import com.mysql.cj.PreparedQuery;
-import com.mysql.cj.jdbc.PreparedStatementWrapper;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.context.internal.ThreadLocalSessionContext;
-import org.hibernate.service.ServiceRegistry;
-
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
-public class HibernateUtil {
+public class HibernateUtil { //Hibernate utility class
     private static SessionFactory factory;
 
     public static synchronized void buildSessionFactory() {
