@@ -11,7 +11,7 @@ public class Converter { //Converter Class for utilities
 
     public static String convertJsonToXml(JSONObject json) { //Convert JSON string into XML
         return XML.toString(json);
-    }
+    } // Convert JSON to XML
 
     public static JSONObject convertBsonToJson(Document bson) { //Convert BSON document into JSON
         return new JSONObject(bson.toJson());
