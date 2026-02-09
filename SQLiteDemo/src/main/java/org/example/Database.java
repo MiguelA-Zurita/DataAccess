@@ -5,7 +5,10 @@ package org.example;
  * - Providing JDBC connections, enabling SQLite foreign keys and creating the schema on application startup if it does not exist.
  */
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class Database {
     private static final String URL = "jdbc:sqlite:store.db";
