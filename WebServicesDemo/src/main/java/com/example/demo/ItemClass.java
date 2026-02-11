@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.bson.json.JsonObject;
 import org.jetbrains.annotations.NotNull;
 
 import java.sql.Connection;
@@ -18,11 +19,11 @@ public class ItemClass {
         @Override
         @NotNull
         public String toString() {
-            return "Item{" +
-                    "id:" + id +
-                    ", name:'" + name + '\'' +
-                    ", description:'" + description + '\'' +
-                    ", unitPrice:" + unitPrice +
+            return "{" +
+                    "\"id:\"" + id +
+                    ", \"name\":\"" + name + '\"' +
+                    ", \"description\":\"" + description + '\"' +
+                    ", \"unitPrice\":" + unitPrice +
                     ", stock:" + stock +
                     '}';
         }

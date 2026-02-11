@@ -16,20 +16,37 @@ public class ItemController {
             return e.getMessage();
         }
     }
+
     @GetMapping("/items/{id}")
     public String getItem(@PathVariable int id) {
         try {
             return ItemClass.getById(id).toString();
-        } catch(NullPointerException | SQLException e){
+        } catch (NullPointerException | SQLException e) {
             return "Item not found:" + e.getMessage();
         }
     }
+
     @PostMapping("/items")
-    public String postItem(@RequestBody ItemClass.Item item){
+    public String postItem(@RequestBody ItemClass.Item item) {
         try {
             ItemClass.add(item);
             return item.toString();
         } catch (Exception e) {
+            return e.getMessage();
+        }
+    }
+
+    @DeleteMapping("items/{id}")
+    public String deleteItem(@RequestParam int id) {
+        try {
+            ItemClass.delete(id);
+            try {
+                ItemClass.getById(id);
+                return "Item deleted";
+            } catch (NullPointerException e) {
+                return "Item not deleted";
+            }
+        } catch (SQLException e) {
             return e.getMessage();
         }
     }
