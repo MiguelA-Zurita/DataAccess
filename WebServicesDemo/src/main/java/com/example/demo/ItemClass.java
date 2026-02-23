@@ -2,6 +2,7 @@ package com.example.demo;
 
 import org.bson.json.JsonObject;
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONStringer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,22 +10,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ItemClass {
 
     /**
      * Immutable projection of a row in the ITEMS table.
      */
-    public record Item(int id, String name, String description, double unitPrice, int stock) {
+    public record Item(Optional<Integer> id, String name, String description, double unitPrice, int stock) {
         @Override
         @NotNull
         public String toString() {
             return "{" +
-                    "\"id:\"" + id +
+                    "\"id\":" + id +
                     ", \"name\":\"" + name + '\"' +
                     ", \"description\":\"" + description + '\"' +
                     ", \"unitPrice\":" + unitPrice +
-                    ", stock:" + stock +
+                    ", \"stock\":" + stock +
                     '}';
         }
     }
@@ -52,7 +54,7 @@ public class ItemClass {
         try (Connection conn = Database.getConnection(); PreparedStatement ps = conn.prepareStatement(sql); ResultSet rs = ps.executeQuery()) { //Tries the connection
             while (rs.next()) {
                 list.add(new Item(
-                        rs.getInt("ID"),
+                        Optional.of(rs.getInt("ID")),
                         rs.getString("Name"),
                         rs.getString("Description"),
                         rs.getDouble("UnitPrice"),
@@ -73,7 +75,7 @@ public class ItemClass {
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     return new Item(
-                            rs.getInt("ID"),
+                            Optional.of(rs.getInt("ID")),
                             rs.getString("Name"),
                             rs.getString("Description"),
                             rs.getDouble("UnitPrice"),
@@ -95,7 +97,7 @@ public class ItemClass {
             ps.setString(2, i.description());
             ps.setDouble(3, i.unitPrice());
             ps.setInt(4, i.stock());
-            ps.setInt(5, i.id());
+            ps.setInt(5, i.id.orElse(null));
             ps.executeUpdate();
         }
     }
